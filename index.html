@@ -3,19 +3,32 @@
 <html>
     
   <head>
-           
+       <!-- register service worker -->
+       <script>
+           if ('serviceWorker' in navigator) 
+                      {
+                      window.addEventListener('load', function() {
+                        navigator.serviceWorker.register('/sw.js')
+                        .then(function() { console.log("Service Worker Registered"); });
+                      }
+                      );
+                    }  
+                    </script> 
+                <!-- end of service worker -->
+        <!-- start of web manifest -->
+        <link rel="manifest" href="/manifest.json">
+         <!-- end of web manifest -->
+           <!-- theme-color -->
+        <meta name="theme-color" content="#fff" />
+        <!-- end-theme-color -->
         <script src="assets/jquery.min.js"></script> 
         <script src="assets/skel.min.js"></script>
         <script src="assets/util.js"></script>
         <script src="assets/respond.min.js"></script>
         <script src="assets/responsive.js"></script>
         <link rel="stylesheet" href="assets/main.css" />
-            
-  
-        <title>Maye Edwin's Profile</title>
-            
-            
-            <meta charset="utf-8">
+        <title>PWA Fire Codelab Demo</title>
+        <meta charset="utf-8">
             
             
             <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
@@ -31,6 +44,8 @@
         <link rel="stylesheet" href="assets/css/ie8.css" />
         
         <![endif]-->
+       
+        <link rel="shortcut icon" href="icons/pwafire192white.png">
                 
 </head>
 
@@ -110,17 +125,11 @@
         <div class="inner">
         <header>
          <h2> Work</h2>
-                                    
-         <p>Currently the Lead Developer<br> at <a href="www.pwafire.org">PWAFIRE.ORG</a> </p>
-
         </header>
-                                
-                                <p>
-                                    
-                                   Lead on-site Web Developer, Digital Marketing and Graphics/Design Lead at Impala Glass Industries Ltd.
-                                
-                                </p>
-                                    
+        <header>
+                <p>Currently</p>
+        </header>    
+        <p>Lead Web Developer, Digital Marketing and Graphics/Design Lead at pwafire.org</p>                  
                                     
          <header>
                                                                    
