@@ -11,10 +11,10 @@
                     console.debug("updated cached page: " + event.request.url, networkResponse);
                       cache.put(event.request, networkResponse.clone());}
                       return networkResponse;
-                      }, function (e) {   
+                      }, function(event) {   
   // rejected promise - just ignore it, we're offline!   
-                      console.log("Error in fetch()", e);
-                      e.waitUntil(
+                      console.log("Error in fetch()", event);
+                      event.waitUntil(
                       caches.open('cache').then(function(cache) { // our cache here is named *cache* in the caches.open()
                       return cache.addAll
                       ([            

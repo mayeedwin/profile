@@ -1,22 +1,23 @@
+// PWA Fire Developer
 (function () {
     'use strict';
-    //Check if share API is supported or not
+    //check if share API is supported or not
     if (navigator.share !== undefined) {
       document.addEventListener('DOMContentLoaded', function() {
         var shareBtn = document.querySelector('.share');
-        //Share button event listener
+        //share button event listener
         shareBtn.addEventListener('click', function(event) {
-          //Web share API
+          //web share API
           navigator.share({
             title: document.title,
-            text: 'Welcome to PWA Fire Developer',
+            text: 'Welcome to PWA Fire Developer; This is our Demo Progressive App #pwafire #pwafirebuild #MeetMaye',
             url: window.location.href
           })
           .then(function() {
-            console.info('Shared successfully.');
+            console.info('PWA Fire Demo shared successfully!');
           })
           .catch(function (error) {
-            console.error('Error in sharing: ', error);
+            console.error('Wooooooo! Some magic failed in sharing: ', error);
           })
         });
       });
