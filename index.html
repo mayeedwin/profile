@@ -1,54 +1,39 @@
 <!DOCTYPE HTML>
 
 <html>
-    
-  <head>
-       <!-- register service worker -->
-       <script>
-           if ('serviceWorker' in navigator) 
-                      {
-                      window.addEventListener('load', function() {
-                        navigator.serviceWorker.register('/sw.js')
-                        .then(function() { console.log("Service Worker Registered"); });
-                      }
-                      );
-                    }  
-                    </script> 
-                <!-- end of service worker -->
-        <!-- start of web manifest -->
-        <link rel="manifest" href="/manifest.json">
-         <!-- end of web manifest -->
-           <!-- theme-color -->
-        <meta name="theme-color" content="#fff" />
-        <!-- end-theme-color -->
-        <script src="assets/jquery.min.js"></script> 
-        <script src="assets/skel.min.js"></script>
-        <script src="assets/util.js"></script>
-        <script src="assets/respond.min.js"></script>
-        <script src="assets/responsive.js"></script>
-        <link rel="stylesheet" href="assets/main.css" />
-        <title>PWA Fire Codelab Demo</title>
-        <meta charset="utf-8">
-            
-            
-            <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-                       
-<!--[if lte IE 9]>
-    
-    
-    <link rel="stylesheet" href="assets/css/ie9.css" />
-    
-    
-    <![endif]--><!--[if lte IE 8]>
-        
-        <link rel="stylesheet" href="assets/css/ie8.css" />
-        
-        <![endif]-->
-       
-        <link rel="shortcut icon" href="icons/pwafire192white.png">
-                
+<head>
+    <!-- register service worker -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', function() {
+                navigator.serviceWorker.register('/sw.js')
+                    .then(function() {
+                        console.log("Service Worker Registered");
+                    });
+            });
+        }
+    </script>
+    <!-- end of service worker -->
+    <!-- start of web manifest -->
+    <link rel="manifest" href="/manifest.json">
+    <!-- end of web manifest -->
+    <!-- theme-color -->
+    <meta name="theme-color" content="#fff" />
+    <!-- end-theme-color -->
+    <script src="assets/jquery.min.js"></script>
+    <script src="assets/skel.min.js"></script>
+    <script src="assets/util.js"></script>
+    <script src="assets/respond.min.js"></script>
+    <script src="assets/responsive.js"></script>
+    <link rel="stylesheet" href="assets/main.css" />
+    <title>PWA Fire Codelab Demo</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <link rel="shortcut icon" href="icons/pwafire192white.png">
+
 </head>
 
+<<<<<<< HEAD
      <body class="">
                      
 <div id="wrapper">
@@ -104,161 +89,220 @@
                                         
                     </li>
                 
-                </ul>
-            
+=======
+<body class="">
+
+    <div id="wrapper">
+
+        <article id="home" class="panel special" style="display: flex;">
+
+            <div class="image" style="background-image: url(&quot;images/mayeedwingdg.jpg&quot;); background-position: center center;">
+
+                <img src="images/mayeedwingdg.jpg" alt="" data-position="center center" style="display: none;">
+
             </div>
-        
-        </div>
-    
-    </article>
-    
-    <article id="work" class="panel secondary inactive" style="display: none;">
-           
-        <div class="image" style="background-image: url(&quot;images/pic04.jpg&quot;);background-position: center center;">
-        <img src="images/pic04.jpg" alt="" data-position="center center" style="display: none;">
-        </div> 
-        <div class="content">
-        <ul class="actions spinX"><li>
-                            
-         <a href="#home" class="button small back">Back</a></li>
-        
-        </ul>
-        
-        <div class="inner">
-        <header>
-         <h2> Work</h2>
-        </header>
-        <header>
-                <p>Currently</p>
-        </header>    
-        <p>Lead Web Developer, Digital Marketing and Graphics/Design Lead at pwafire.org</p>                  
-                                    
-         <header>
-                                                                   
-         <p>Previously</p>
-                               
-        </header>  
 
-        <p>
-           
-            Microsft 4Afrika Technical and Sales Intern at Magtech Solutions. <ul class="actions spinX"><li>
-                            
-                    <a href="https://www.linkedin.com/in/mayeedwin/" class="button small forward">Expand</a></li>
-                   
-                   </ul>
+            <div class="content">
 
-        </p>
-                                
-                                </div>
-                            
-                            </div>
-                        
-                        </article>
-                        
-        <article id="about" class="panel secondary inactive" style="display: none;">
-                            
-        <div class="image" style="background-image: url(&quot;images/mayeedwingdg3.jpg&quot;); background-position: center center;">
-        <img src="images/mayeedwingdg3.jpg" alt="" data-position="center center" style="display: none;">
-         </div>
-    
-         <div class="content">
-             
-            <ul class="actions spinX">
-                
-            <li>
-                    
-            <a href="#home" class="button small back">Back</a>
+                <div class="inner">
 
-            </li>
-            
-            </ul>
-            
-            <div class="inner">
-                
-            <header>
+                    <header>
+                        <h1>Maye Edwin</h1>
 
-            <h2>About</h2>
-            <p>Web Developer and Speaker and <br> Developer Community Building.</p>
+                        <p>A web developer and speaker.
+                            <br> Creator of Project
+                            <br><a href="http://pwafire.org/developer">PWA Fire</a></p>
 
-            </header>
-            <p> 
-             I am a Technologist at Heart, I love developer communities the most and just got super open-source.
-            </p>
-                
-            <p> 
-                
-                Creator of <a href="https://pwafire.org/developer"> Project PWA Fire</a>. It is an open source javascript and json bundle that allows you to convert your existing website into a progressive web app or build one.
-                
-           </p>
-            
+                    </header>
+
+                    <nav id="nav">
+
+                        <ul class="actions vertical special spinY">
+
+                            <li>
+
+                                <a href="#work" class="button">Work</a></li>
+
+                            <li><a href="#about" class="button">About</a></li>
+
+                            <li><a href="#contact" class="button">Contact</a></li>
+
+                        </ul>
+                    </nav>
+
+                    <ul class="icons">
+                        <li>
+
+                            <a href="https://twitter.com/mayeedwin1" class="icon fa-twitter">
+
+                                <span class="label">Twitter</span></a>
+                        </li>
+                        <li><a href="https://facebook.com/mayeedwin" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
+
+                        <li><a href="https://github.com/mayeedwin" class="icon fa-github"><span class="label">GitHub</span></a></li>
+
+                        <li><a href="#" class="icon fa-envelope"><span class="label">Email</span></a>
+
+                        </li>
+
+                    </ul>
+
+                </div>
+
             </div>
-        
-             </div>
-            
-            </article>
-                            
-     
-      <article id="contact" class="panel secondary inactive" style="display: none;">
-                
-            <div class="image" style="background-image: url(&quot;images/mayeedwingdg.jpg&quot;); background-position: center bottom;">
-                
-            <img src="images/mayeedwingdg.jpg" alt="" data-position="bottom center" style="display: none;">
-        
-            </div><div class="content">
-                
-            <ul class="actions spinX">
 
-          
-                
-            <li><a href="#home" class="button small back">Back</a></li>
-
-
-            
-            </ul>
-
-           
-            
-            <div class="inner">
-           
-            <header>
-                    
-            <h2>Let's Talk</h2>
-                
-            </header>
-
-            <form name="contactform" method="post" action="assets/send-email.php">
-            
-            <div class="field half first">
-                               
-            <label for="name">Name</label><input type="text" name="name" id="name">
-                                
-            </div><div class="field half"><label for="email">Email</label>
-                
-            <input type="text" name="email" id="email"></div>
-                                    
-            <div class="field"><label for="message">Message</label>
-                                        
-            <textarea name="message" id="message" rows="5"></textarea>
-                                    
-            </div>
-                      
-            <ul class="actions">
-  
-            <li>
-                                        
-            <a href="#" class="button submit">Send Message</a>
-                                    
-            </li>
-            
-            </ul>
-                                
-            </form>
-            
-           </div>
-             
-           </div>
-                    
         </article>
+
+        <article id="work" class="panel secondary inactive" style="display: none;">
+
+            <div class="image" style="background-image: url(&quot;images/pic04.jpg&quot;);background-position: center center;">
+                <img src="images/pic04.jpg" alt="" data-position="center center" style="display: none;">
+            </div>
+            <div class="content">
+                <ul class="actions spinX">
+                    <li>
+
+                        <a href="#home" class="button small back">Back</a></li>
+
+>>>>>>> 5cc7e4b617a5af93ed16c00241b25d05338ca2e9
+                </ul>
+
+                <div class="inner">
+                    <header>
+                        <h2> Work</h2>
+                    </header>
+                    <header>
+                        <p>Currently</p>
+                    </header>
+                    <p>Lead Web Developer, Digital Marketing and Graphics/Design Lead at pwafire.org</p>
+
+                    <header>
+
+                        <p>Previously</p>
+
+                    </header>
+
+                    <p>
+                        Microsft 4Afrika Technical and Sales Intern at Magtech Solutions.
+                        <ul class="actions spinX">
+                            <li>
+                                <a href="https://www.linkedin.com/in/mayeedwin/" class="button small forward">Expand</a>
+                            </li>
+                        </ul>
+
+                    </p>
+
+                </div>
+
+            </div>
+
+        </article>
+
+        <article id="about" class="panel secondary inactive" style="display: none;">
+
+            <div class="image" style="background-image: url(&quot;images/mayeedwingdg3.jpg&quot;); background-position: center center;">
+                <img src="images/mayeedwingdg3.jpg" alt="" data-position="center center" style="display: none;">
+            </div>
+
+            <div class="content">
+
+                <ul class="actions spinX">
+
+                    <li>
+
+                        <a href="#home" class="button small back">Back</a>
+
+                    </li>
+
+                </ul>
+
+                <div class="inner">
+
+                    <header>
+
+                        <h2>About</h2>
+                        <p>Web Developer and Speaker and
+                            <br> Developer Community Building.</p>
+
+                    </header>
+                    <p>
+                        I am a Technologist at Heart, I love developer communities the most and just got super open-source.
+                    </p>
+
+                    <p>
+
+                        Creator of <a href="https://pwafire.org/developer"> Project PWA Fire</a>. It is an open source javascript and json bundle that allows you to convert your existing website into a progressive web app or build one.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+        </article>
+
+        <article id="contact" class="panel secondary inactive" style="display: none;">
+
+            <div class="image" style="background-image: url(&quot;images/mayeedwingdg.jpg&quot;); background-position: center bottom;">
+
+                <img src="images/mayeedwingdg.jpg" alt="" data-position="bottom center" style="display: none;">
+
+            </div>
+            <div class="content">
+
+                <ul class="actions spinX">
+
+                    <li><a href="#home" class="button small back">Back</a></li>
+
+                </ul>
+
+                <div class="inner">
+
+                    <header>
+
+                        <h2>Let's Talk</h2>
+
+                    </header>
+
+                    <form name="contactform" method="post" action="assets/send-email.php">
+
+                        <div class="field half first">
+
+                            <label for="name">Name</label>
+                            <input type="text" name="name" id="name">
+
+                        </div>
+                        <div class="field half">
+                            <label for="email">Email</label>
+
+                            <input type="text" name="email" id="email">
+                        </div>
+
+                        <div class="field">
+                            <label for="message">Message</label>
+
+                            <textarea name="message" id="message" rows="5"></textarea>
+
+                        </div>
+
+                        <ul class="actions">
+
+                            <li>
+
+                                <a href="#" class="button submit">Send Message</a>
+
+                            </li>
+
+                        </ul>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+        </article>
+<<<<<<< HEAD
                                             
        <footer id="footer" class="">
                 
@@ -333,3 +377,16 @@
     
     
     </html>
+=======
+
+        <footer id="footer" class="">
+
+            <p class="copyright">© Maye Edwin 2018</p>
+
+        </footer>
+
+    </div>
+    <script src="assets/buttons-navigate.js"></script>
+</body>
+</html>
+>>>>>>> 5cc7e4b617a5af93ed16c00241b25d05338ca2e9
