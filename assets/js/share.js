@@ -10,7 +10,7 @@
           //web share API
           navigator.share({
             title: document.title,
-            text: 'Welcome to PWA Fire Developer; This is our Demo Progressive App #pwafire #pwafirebuild #MeetMaye',
+            text: 'This is PWA Fire Demo Progressive App #pwafire #pwafirebuild #MeetMaye',
             url: window.location.href
           })
           .then(function() {
