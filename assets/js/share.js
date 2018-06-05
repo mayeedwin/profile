@@ -11,8 +11,7 @@
           navigator.share({
             title: document.title,
             text: 'This is PWA Fire Demo Progressive App #pwafire #pwafirebuild #MeetMaye',
-            url: window.location.href,
-            text: '#pwafire #pwafirebuild #MeetMaye'
+            url: window.location.href
           })
           .then(function() {
             console.info('PWA Fire Demo shared successfully!');
