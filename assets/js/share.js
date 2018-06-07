@@ -23,7 +23,7 @@
             console.info('PWA Fire Demo shared successfully!');
           })
           .catch(function (error) {
-            console.error('Wooooooo! Some magic failed in sharing: ', error);
+            console.error('Wooooooo! Some magic failed in sharing:', error);
           })
         });
       });
