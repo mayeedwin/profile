@@ -1,8 +1,5 @@
-## [profile](https://pwafire-codelab.firebaseapp.com/)
-### Personal Progressive Web APP Profile - Web Page. 
+### [PWA Fire Codelab](https://pwafire-codelab.firebaseapp.com/)
 
-The next update will be an addition of a json file for easy configuration for use. We shall also have a firebase served version in a different branch too which makes life even much more simpler!
+Learn how to convert this site into a progressive web app at [PWA Fire Developer Codelab](http://www.pwafire.org/developer/codelabs/pwafire/)
 
 Launch Demo PWA here : [https://pwafire-codelab.firebaseapp.com/](https://pwafire-codelab.firebaseapp.com/)
-
-Get started building amazing web experiences by taking some of codelabs here [PWA Fire Developer](http://www.pwafire.org/developer/)
