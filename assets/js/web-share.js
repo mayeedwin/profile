@@ -14,7 +14,9 @@
         shareBtn.addEventListener('click', function(event) {
           // web share API
           navigator.share({
+          // pick the default title of your page in the title tag
             title: document.title,
+          // change the text of your share as you may like; to e.g desc of your pwa
             text: 'This is PWA Fire Demo Progressive App #pwafire #MeetMaye',
             url: window.location.href
           })
