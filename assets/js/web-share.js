@@ -1,9 +1,7 @@
-
-// pwa fire for developers - codelab - web share api - add on
+// pwa fire for developers - codelab - web share api - add-on
 // https://pwafire.org/developer/
 // Authored by maye edwin https://twitter.com/MayeEdwin1
 // this web app share add-on works magically when on your mobile device;
-
 (function () {
     'use strict';
     // check if share API is supported or not
@@ -16,7 +14,7 @@
           // web share API
           navigator.share({
             title: document.title,
-            text: 'This is PWA Fire Demo Progressive App #pwafire #pwafirebuild #MeetMaye',
+            text: 'This is PWA Fire Demo Progressive App #pwafire #MeetMaye',
             url: window.location.href
           })
           .then(function() {
