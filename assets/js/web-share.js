@@ -1,3 +1,4 @@
+
 // pwa fire for developers - codelab - web share api - add-on
 // https://pwafire.org/developer/
 // Authored by maye edwin https://twitter.com/MayeEdwin1
@@ -27,3 +28,4 @@
       });
     }
   })();
+
