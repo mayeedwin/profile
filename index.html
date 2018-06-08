@@ -2,28 +2,10 @@
 
 <html>
 <head>
-    <!-- register service worker -->
-    <script>
-        if ('serviceWorker' in navigator) {
-            window.addEventListener('load', function() {
-                navigator.serviceWorker.register('/sw.js')
-                    .then(function() {
-                        console.log("Service Worker Registered");
-                    });
-            });
-        }
-    </script>
-    <!-- end of service worker -->
     <title>PWA Fire Codelab Demo PWA</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
     <link rel="shortcut icon" href="icons/pwafire192white.png">
-    <!-- start of web manifest -->
-    <link rel="manifest" href="/manifest.json">
-    <!-- end of web manifest -->
-    <!-- theme-color -->
-    <meta name="theme-color" content="#fff" />
-    <!-- end-theme-color -->
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/js/skel.min.js"></script>
     <script src="assets/js/util.js"></script>
@@ -254,6 +236,5 @@
 
     </div>
     <script src="assets/js/buttons-navigate.js"></script>
-    <script src="assets/js/web-share.js"></script>
 </body>
 </html>
