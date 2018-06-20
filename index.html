@@ -6,7 +6,7 @@
     <script>
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', function() {
-                navigator.serviceWorker.register('/sw.js')
+                navigator.serviceWorker.register('/service-worker.js')
                     .then(function() {
                         console.log("Service Worker Registered");
                     });
@@ -27,7 +27,7 @@
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/js/skel.min.js"></script>
     <script src="assets/js/util.js"></script>
-    <script src="assetsjs/respond.min.js"></script>
+    <script src="assets/js/respond.min.js"></script>
     <script src="assets/js/responsive.js"></script>
     <link rel="stylesheet" href="assets/css/main.css" />
 </head>
@@ -143,8 +143,8 @@
 
         <article id="about" class="panel secondary inactive" style="display: none;">
 
-            <div class="image" style="background-image: url(&quot;images/mayeedwingdg3.jpg&quot;); background-position: center center;">
-                <img src="images/mayeedwingdg3.jpg" alt="" data-position="center center" style="display: none;">
+            <div class="image" style="background-image: url(&quot;images/mayeedwingdg.jpg&quot;); background-position: center center;">
+                <img src="images/mayeedwingdg.jpg" alt="" data-position="center center" style="display: none;">
             </div>
 
             <div class="content">
