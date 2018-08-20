@@ -17,8 +17,7 @@
                       return cache.addAll
                       ([            
   //cache.addAll(), takes a list of URLs, then fetches them from the server and adds the response to the cache.           
-  // add your entire site to the cache- as in the code below; for offline access
-  // If you have some build process for your site, perhaps that could generate the list of possible URLs that a user might load.               
+  // add your entire site to the cache- as in the code below; for offline access              
                       '/', // do not remove this
                       '/index.html', //default
                       '/index.html?homescreen=1', //default
@@ -27,7 +26,6 @@
                       'icons/pwafire128white.png', // add more icons path below as in this line. Check out the icons path in the icons folder.
                       
   // Do not replace/delete/edit the service-worker.js/ and manifest.js paths below
-                      'service-worker.js',
                       'manifest.js',
   //These are links to the extenal social media buttons that should be cached; we have used twitter's as an example
                       'https://platform.twitter.com/widgets.js',       
