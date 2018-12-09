@@ -1,4 +1,4 @@
-## [profile](https://pwafire-codelab.firebaseapp.com/)
+## [Profile](https://pwafire-codelab.firebaseapp.com/)
 ### Personal Progressive Web APP Profile - Web Page. 
 
 The next update will be an addition of a json file for easy configuration for use. 
