@@ -20,9 +20,7 @@
                       'icons/pwafire128white.png', // add more icons path below as in this line. Check out the icons path in the icons folder.
                       
   // Do not replace/delete/edit the service-worker.js/ and manifest.json paths below
-                      'manifest.json',
-  //These are links to the extenal social media buttons that should be cached; we have used twitter's as an example
-                      'https://platform.twitter.com/widgets.js',       
+                      'manifest.json'
                       ]);
                       })
                       );
