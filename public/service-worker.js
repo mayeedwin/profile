@@ -1,17 +1,11 @@
      self.addEventListener('fetch', function(event) {
         event.respondWith(caches.open('cache').then(function(cache) {
           return cache.match(event.request).then(function(response) {
-            console.log("cache request: " + event.request.url);
-              var fetchPromise = fetch(event.request).then(function(networkResponse) {           
-  // if we got a response from the cache, update the cache                   
-                console.log("fetch completed: " + event.request.url, networkResponse);
+              var fetchPromise = fetch(event.request).then(function(networkResponse) {
                   if (networkResponse) {
-                    console.debug("updated cached page: " + event.request.url, networkResponse);
                       cache.put(event.request, networkResponse.clone());}
                       return networkResponse;
-                      }, function(event) {   
-  // rejected promise - just ignore it, we're offline!   
-                      console.log("Error in fetch()", event);
+                      }, function() {
                       event.waitUntil(
                       caches.open('cache').then(function(cache) { // our cache here is named *cache* in the caches.open()
                       return cache.addAll

@@ -1,24 +1,41 @@
-/**
- * Web Share API integration.
- * Falls back silently when the API is not available (desktop browsers).
- */
-export function initWebShare(): void {
-  if (!('share' in navigator)) return
+import { webShare, copyText } from "pwafire";
 
-  const shareBtn = document.querySelector<HTMLElement>('.share')
-  if (!shareBtn) return
+export type ShareContext = "home" | "work" | "about" | "contact";
 
-  shareBtn.addEventListener('click', (event) => {
-    event.preventDefault()
-    navigator
-      .share({
-        title: document.title,
-        text: 'This is PWA Fire Demo Progressive App #pwafire #MeetMaye',
-        url: window.location.href,
-      })
-      .then(() => console.info('PWA Fire Demo shared successfully!'))
-      .catch((error: unknown) =>
-        console.error('Wooooooo! Some magic failed in sharing:', error)
-      )
-  })
-}
+const shareTextByContext: Record<ShareContext, string> = {
+  home: "Check out Maye Edwin's profile — Web Developer, Speaker & PWA Fire Creator #pwafire #MeetMaye",
+  work: "Maye Edwin — Lead Web Developer at pwafire.org. Previously Microsoft 4Afrika Intern. #pwafire",
+  about:
+    "Maye Edwin — Technologist, Developer Community Builder & Creator of Project PWA Fire #pwafire",
+  contact: "Let's connect — Maye Edwin's contact & profile #pwafire"
+};
+
+const getShareData = (context: ShareContext) => ({
+  title: document.title,
+  text: shareTextByContext[context],
+  url: window.location.href
+});
+
+export const sharePage = async (
+  context: ShareContext = "home"
+): Promise<void> => {
+  const data = getShareData(context);
+  try {
+    const { ok } = await webShare(data);
+    if (!ok) await copyText(data.url);
+  } catch {
+    await copyText(data.url);
+  }
+};
+
+export const initWebShare = (): void => {
+  document.querySelectorAll<HTMLElement>("[data-share]").forEach((btn) => {
+    btn.addEventListener("click", async (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      const context = (btn.getAttribute("data-share") ??
+        "home") as ShareContext;
+      await sharePage(context);
+    });
+  });
+};
