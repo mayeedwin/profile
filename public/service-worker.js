@@ -1,13 +1,7 @@
-const CACHE = "cache-v1";
+const CACHE = "v1";
 const PRELOAD = [
   "/",
   "/index.html",
-  "/work/",
-  "/work/index.html",
-  "/about/",
-  "/about/index.html",
-  "/contact/",
-  "/contact/index.html",
   "/icons/pwafire128white.png",
   "/manifest.json"
 ];
@@ -30,39 +24,16 @@ self.addEventListener("activate", (e) => {
   self.clients.claim();
 });
 
-function navFallbackUrls(url) {
-  const u = new URL(url);
-  const path = u.pathname.replace(/\/$/, "") || "/";
-  const base = u.origin;
-  if (path === "/") return [base + "/", base + "/index.html"];
-  return [base + path + "/", base + path + "/index.html"];
-}
-
 self.addEventListener("fetch", (e) => {
   if (e.request.method !== "GET") return;
-
   e.respondWith(
     fetch(e.request)
       .then((res) => {
-        if (res && res.ok) {
-          const clone = res.clone();
-          caches.open(CACHE).then((c) => c.put(e.request, clone));
-        }
+        if (res?.ok)
+          caches.open(CACHE).then((c) => c.put(e.request, res.clone()));
         return res;
       })
-      .catch(() => {
-        if (e.request.mode === "navigate") {
-          const urls = navFallbackUrls(e.request.url);
-          return caches
-            .open(CACHE)
-            .then((cache) =>
-              Promise.all(urls.map((url) => cache.match(url))).then(
-                (results) => results.find(Boolean) || Promise.reject()
-              )
-            );
-        }
-        return caches.match(e.request);
-      })
+      .catch(() => caches.match(e.request))
   );
 });
 
