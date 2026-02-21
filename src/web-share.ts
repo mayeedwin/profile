@@ -28,13 +28,17 @@ export const sharePage = async (
   }
 };
 
+const VALID_CONTEXTS: ShareContext[] = ["home", "work", "about", "contact"];
+
 export const initWebShare = (): void => {
   document.querySelectorAll<HTMLElement>("[data-share]").forEach((btn) => {
     btn.addEventListener("click", async (e) => {
       e.preventDefault();
       e.stopPropagation();
-      const context = (btn.getAttribute("data-share") ??
-        "home") as ShareContext;
+      const raw = btn.getAttribute("data-share") ?? "home";
+      const context: ShareContext = VALID_CONTEXTS.includes(raw as ShareContext)
+        ? (raw as ShareContext)
+        : "home";
       await sharePage(context);
     });
   });

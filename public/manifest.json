@@ -7,10 +7,10 @@
   "name": "Maye Edwin — Web Developer & PWA Fire Creator",
   "description": "Personal profile: Web Developer, Speaker, Community Builder. Creator of PWA Fire.",
   "icons": [
-    {"src": "icons/pwafire512.png", "type": "image/png", "sizes": "48x48"},
-    {"src": "icons/pwafire512.png", "type": "image/png", "sizes": "96x96"},
-    {"src": "icons/pwafire512.png", "type": "image/png", "sizes": "192x192"},
-    {"src": "icons/pwafire512.png", "type": "image/png", "sizes": "512x512"}
+    {"src": "icons/pwafire128white.png", "type": "image/png", "sizes": "128x128"},
+    {"src": "icons/pwafire144white.png", "type": "image/png", "sizes": "144x144"},
+    {"src": "icons/pwafire192white.png", "type": "image/png", "sizes": "192x192"},
+    {"src": "icons/pwafire512.png",      "type": "image/png", "sizes": "512x512"}
   ],
   "start_url": "/?launcher=true"
 }

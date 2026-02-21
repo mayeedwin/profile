@@ -6,7 +6,9 @@ if ("serviceWorker" in navigator) {
   window.addEventListener("load", async () => {
     try {
       await navigator.serviceWorker.register("/service-worker.js");
-    } catch {}
+    } catch (err) {
+      console.warn("Service Worker registration failed:", err);
+    }
   });
 }
 

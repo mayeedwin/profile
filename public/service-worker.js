@@ -29,11 +29,12 @@ self.addEventListener("fetch", (e) => {
   e.respondWith(
     fetch(e.request)
       .then((res) => {
-        if (res?.ok)
-          caches.open(CACHE).then((c) => c.put(e.request, res.clone()));
+        if (res?.ok) {
+          e.waitUntil(caches.open(CACHE).then((c) => c.put(e.request, res.clone())));
+        }
         return res;
       })
-      .catch(() => caches.match(e.request))
+      .catch(() => caches.match(e.request).then((cached) => cached ?? Response.error()))
   );
 });
 

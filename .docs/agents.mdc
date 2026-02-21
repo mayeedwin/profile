@@ -1,59 +1,55 @@
 # Agent Guidance — mayeedwin/profile
 
 ## Project Overview
-Personal PWA profile page for Maye Edwin, built as a **Vite + vanilla TypeScript** project deployed to **Firebase Hosting**. No frameworks — pure TypeScript, HTML, and CSS.
+Personal PWA profile page for Maye Edwin — a **Vite + vanilla TypeScript** single-page app deployed to **Firebase Hosting**. No UI frameworks. Uses the [`pwafire`](https://pwafire.org/developer) library for Web Share and PWA install prompts.
 
 ## Architecture
 ```
-index.html          ← Vite HTML entry (root)
+index.html          ← Vite HTML entry (root) — single-page layout, no panel routing
 src/
-  main.ts           ← Panel navigation logic (vanilla TS, no jQuery)
-  web-share.ts      ← Web Share API integration
-  style.css         ← Imports app CSS (Google Fonts, Font Awesome via CDN)
+  main.ts           ← Service worker registration + initWebShare() + install prompt
+  web-share.ts      ← pwafire-based share logic; triggers on [data-share] buttons
+  vite-env.d.ts     ← Vite client type reference (required for CSS imports in TS)
+  style.css         ← All styles; Google Fonts (Syne, Plus Jakarta Sans) via CDN @import
 public/
-  manifest.json     ← PWA web manifest
-  service-worker.js ← Fetch-based caching service worker
-  icons/            ← PWA icons (pwafire*.png)
-  images/           ← Profile images (mayeedwingdg.jpg, pic04.jpg …)
+  manifest.json     ← PWA web manifest (icons reference per-size files)
+  service-worker.js ← Network-first caching SW with waitUntil-safe cache writes
+  icons/            ← pwafire128white.png, pwafire144white.png, pwafire192white.png, pwafire512.png
+  images/           ← mayeedwingdg.jpg and other profile images
 dist/               ← Vite build output (gitignored) — Firebase Hosting serves this
 ```
 
 ## Critical Developer Workflows
 ```bash
-npm install          # install deps (vite, typescript)
+npm install          # install deps (vite, typescript, pwafire)
 npm run dev          # local dev server at http://localhost:5173
-npm run build        # emit production build → dist/
+npm run build        # tsc type-check + vite build → dist/
 npm run preview      # serve dist/ locally for smoke-testing
 ```
 Firebase deploy: `firebase deploy` — reads `"public": "dist"` from `firebase.json`.
 
 ## Key Patterns & Conventions
 
-### Panel Navigation (src/main.ts)
-Single-page feel via CSS `display` toggling + `inactive` class transitions.  
-All panels live inside `#wrapper`; the first `.panel` is visible, rest start hidden.  
-Anchor clicks on `a[href^="#"]` drive transitions — `locked` boolean prevents re-entrancy.  
-`spinX`/`spinY` classes on `<ul>` trigger a 250ms extra delay before switching.
+### Layout
+Single-page — all content visible in one scroll, no JS-driven panel transitions.  
+`#wrapper` > `.hero` + `.intro` sections + `footer` — all static HTML.
 
-### Breakpoints
-Responsive behaviour is handled **entirely by CSS media queries** in `src/style.css`.  
-There is no JS breakpoint library (skel.js was removed during the Vite migration).
-
-### Web Share API (src/web-share.ts)
-Feature-detected with `navigator.share !== undefined`.  
-The `.share` CSS class on any `<a>` element is the trigger button.
+### Web Share (src/web-share.ts)
+Any element with `[data-share="<context>"]` triggers sharing via `pwafire.webShare`.  
+Context must be one of `"home" | "work" | "about" | "contact"` — validated against `VALID_CONTEXTS` before use; falls back to `"home"` for unknown values.  
+Falls back to `pwafire.copyText(url)` if sharing fails.  
+Share trigger in HTML: `<button type="button" class="btn" data-share="home">Share</button>`.
 
 ### PWA / Service Worker
-Service worker is registered in `src/main.ts` on the `load` event.  
-The worker itself lives in `public/service-worker.js` (served at `/service-worker.js`).  
-Manifest is `public/manifest.json` — linked from `index.html` as `/manifest.json`.
+Service worker registered in `src/main.ts` on `window load` (errors logged with `console.warn`).  
+`public/service-worker.js` uses a **network-first** strategy: serves from network, writes to cache using `e.waitUntil(...)` so the write isn't terminated early, falls back to cache on failure.  
+Offline fallback returns `Response.error()` when neither network nor cache is available.
 
 ### CSS
-`src/style.css` contains all styles.  
-External CDN fonts/icons: Google Fonts (`Raleway`, `Montserrat`) and Font Awesome 4.6 from MaxCDN — both `@import`-ed at the top of the CSS file.  
-Body loading-state classes `is-loading-0` / `is-loading-1` control entry animations.
+`src/style.css` — dark theme (`--bg: #0a0a0a`). No CSS framework.  
+Google Fonts `Syne` + `Plus Jakarta Sans` imported via CDN `@import` at top of file.  
+No Font Awesome — social icons are inline SVG in `index.html`.
 
 ### Firebase
 Project: `pwafire-codelab` (see `.firebaserc`).  
-`firebase.json` sets `"public": "dist"` — always run `npm run build` before deploying.  
-Firebase SDK is initialised inline in `index.html` (legacy CDN script, analytics only).
+`firebase.json` sets `"public": "dist"` — run `npm run build` before deploying.
