@@ -1,0 +1,55 @@
+# Agent Guidance — mayeedwin/profile
+
+## Project Overview
+Personal PWA profile page for Maye Edwin — a **Vite + vanilla TypeScript** single-page app deployed to **Firebase Hosting**. No UI frameworks. Uses the [`pwafire`](https://pwafire.org/developer) library for Web Share and PWA install prompts.
+
+## Architecture
+```
+index.html          ← Vite HTML entry (root) — single-page layout, no panel routing
+src/
+  main.ts           ← Service worker registration + initWebShare() + install prompt
+  web-share.ts      ← pwafire-based share logic; triggers on [data-share] buttons
+  vite-env.d.ts     ← Vite client type reference (required for CSS imports in TS)
+  style.css         ← All styles; Google Fonts (Syne, Plus Jakarta Sans) via CDN @import
+public/
+  manifest.json     ← PWA web manifest (icons reference per-size files)
+  service-worker.js ← Network-first caching SW with waitUntil-safe cache writes
+  icons/            ← pwafire128white.png, pwafire144white.png, pwafire192white.png, pwafire512.png
+  images/           ← mayeedwingdg.jpg and other profile images
+dist/               ← Vite build output (gitignored) — Firebase Hosting serves this
+```
+
+## Critical Developer Workflows
+```bash
+npm install          # install deps (vite, typescript, pwafire)
+npm run dev          # local dev server at http://localhost:5173
+npm run build        # tsc type-check + vite build → dist/
+npm run preview      # serve dist/ locally for smoke-testing
+```
+Firebase deploy: `firebase deploy` — reads `"public": "dist"` from `firebase.json`.
+
+## Key Patterns & Conventions
+
+### Layout
+Single-page — all content visible in one scroll, no JS-driven panel transitions.  
+`#wrapper` > `.hero` + `.intro` sections + `footer` — all static HTML.
+
+### Web Share (src/web-share.ts)
+Any element with `[data-share="<context>"]` triggers sharing via `pwafire.webShare`.  
+Context must be one of `"home" | "work" | "about" | "contact"` — validated against `VALID_CONTEXTS` before use; falls back to `"home"` for unknown values.  
+Falls back to `pwafire.copyText(url)` if sharing fails.  
+Share trigger in HTML: `<button type="button" class="btn" data-share="home">Share</button>`.
+
+### PWA / Service Worker
+Service worker registered in `src/main.ts` on `window load` (errors logged with `console.warn`).  
+`public/service-worker.js` uses a **network-first** strategy: serves from network, writes to cache using `e.waitUntil(...)` so the write isn't terminated early, falls back to cache on failure.  
+Offline fallback returns `Response.error()` when neither network nor cache is available.
+
+### CSS
+`src/style.css` — dark theme (`--bg: #0a0a0a`). No CSS framework.  
+Google Fonts `Syne` + `Plus Jakarta Sans` imported via CDN `@import` at top of file.  
+No Font Awesome — social icons are inline SVG in `index.html`.
+
+### Firebase
+Project: `pwafire-codelab` (see `.firebaserc`).  
+`firebase.json` sets `"public": "dist"` — run `npm run build` before deploying.

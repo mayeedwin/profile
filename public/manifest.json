@@ -1,0 +1,16 @@
+{
+  "background_color": "#0a0a0a",
+  "display": "standalone",
+  "orientation": "portrait",
+  "theme_color": "#0a0a0a",
+  "short_name": "Maye Edwin",
+  "name": "Maye Edwin — Web Developer & PWA Fire Creator",
+  "description": "Personal profile: Web Developer, Speaker, Community Builder. Creator of PWA Fire.",
+  "icons": [
+    {"src": "icons/pwafire128white.png", "type": "image/png", "sizes": "128x128"},
+    {"src": "icons/pwafire144white.png", "type": "image/png", "sizes": "144x144"},
+    {"src": "icons/pwafire192white.png", "type": "image/png", "sizes": "192x192"},
+    {"src": "icons/pwafire512.png",      "type": "image/png", "sizes": "512x512"}
+  ],
+  "start_url": "/?launcher=true"
+}
